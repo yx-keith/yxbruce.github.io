@@ -101,7 +101,7 @@
 <meta property="og:description" content="对mapreduce的理解by 逍锅锅  mapreduce 之shuffle过程详解 一、Combiner函数  由于map任务和reduce 任务是在不同的node上，不同节点之间的交互会降低效率，所以应该尽量最小化map和reduce任务之间的数据传输；hadoop允许用户针对map的输出自定义一个combiner函数，对每个map的输出进行优化，最后将combiner的结果传递给到redu">
 <meta property="og:image" content="https://haritbigdata.files.wordpress.com/2015/07/mapreduce.png">
 <meta property="og:image" content="http://img02.tooopen.com/images/20160509/tooopen_sy_161967094653.jpg">
-<meta property="og:updated_time" content="2017-07-14T03:29:13.000Z">
+<meta property="og:updated_time" content="2017-07-14T04:14:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop学习笔记一">
 <meta name="twitter:description" content="对mapreduce的理解by 逍锅锅  mapreduce 之shuffle过程详解 一、Combiner函数  由于map任务和reduce 任务是在不同的node上，不同节点之间的交互会降低效率，所以应该尽量最小化map和reduce任务之间的数据传输；hadoop允许用户针对map的输出自定义一个combiner函数，对每个map的输出进行优化，最后将combiner的结果传递给到redu">
@@ -348,7 +348,7 @@
 <p>一、Combiner函数</p>
 </blockquote>
 <p>由于map任务和reduce 任务是在不同的node上，不同节点之间的交互会降低效率，所以应该尽量最小化map和reduce任务之间的数据传输；hadoop允许用户针对map的输出自定义一个combiner函数，对每个map的输出进行优化，最后将combiner的结果传递给到reduce端，这样就会减少写入磁盘的数据和传递给reducer的数据，从而提高效率。并且由于combiner是优化函数，hadoop无法确定针对特定的map输出记录要调用多少次combiner函数，也就是说，不管调用combiner函数多少次都不会影响reduce 的输出。下面以统计1950年的最高气温为例：</p>
-<p>第一个map输出为：</p>
+<p>第一个map输出为：    </p>
 <p> (1950,1)<br> (1950,10)<br> (1950,20)  </p>
 <p>第二个map的输出为：</p>
 <p> (1950,30)<br> (1950,13)</p>
