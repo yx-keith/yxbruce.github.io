@@ -93,16 +93,19 @@
 
 
 
-<meta name="description" content="文字，是一个人心灵的名片菩提一叶常回家看看我爱你是真实的璀璨的蓝岸山中觅影梦里叶落知多少长大的感觉悲凉之秋我若风，岁如歌有月有半，好个艳阳天山花恋人">
+<meta name="description" content="对mapreduce的理解by 逍锅锅  mapreduce 之shuffle过程详解 一、Combiner函数  由于map任务和reduce 任务是在不同的node上，不同节点之间的交互会降低效率，所以应该尽量最小化map和reduce任务之间的数据传输；hadoop允许用户针对map的输出自定义一个combiner函数，对每个map的输出进行优化，最后将combiner的结果传递给到redu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一篇散文">
-<meta property="og:url" content="http://yoursite.com/2017/07/12/散文/index.html">
+<meta property="og:title" content="Hadoop学习笔记一">
+<meta property="og:url" content="http://yoursite.com/2017/07/14/shuffle过程/index.html">
 <meta property="og:site_name" content="yyii">
-<meta property="og:description" content="文字，是一个人心灵的名片菩提一叶常回家看看我爱你是真实的璀璨的蓝岸山中觅影梦里叶落知多少长大的感觉悲凉之秋我若风，岁如歌有月有半，好个艳阳天山花恋人">
-<meta property="og:updated_time" content="2017-07-13T01:17:28.000Z">
+<meta property="og:description" content="对mapreduce的理解by 逍锅锅  mapreduce 之shuffle过程详解 一、Combiner函数  由于map任务和reduce 任务是在不同的node上，不同节点之间的交互会降低效率，所以应该尽量最小化map和reduce任务之间的数据传输；hadoop允许用户针对map的输出自定义一个combiner函数，对每个map的输出进行优化，最后将combiner的结果传递给到redu">
+<meta property="og:image" content="https://haritbigdata.files.wordpress.com/2015/07/mapreduce.png">
+<meta property="og:image" content="http://img02.tooopen.com/images/20160509/tooopen_sy_161967094653.jpg">
+<meta property="og:updated_time" content="2017-07-14T03:14:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一篇散文">
-<meta name="twitter:description" content="文字，是一个人心灵的名片菩提一叶常回家看看我爱你是真实的璀璨的蓝岸山中觅影梦里叶落知多少长大的感觉悲凉之秋我若风，岁如歌有月有半，好个艳阳天山花恋人">
+<meta name="twitter:title" content="Hadoop学习笔记一">
+<meta name="twitter:description" content="对mapreduce的理解by 逍锅锅  mapreduce 之shuffle过程详解 一、Combiner函数  由于map任务和reduce 任务是在不同的node上，不同节点之间的交互会降低效率，所以应该尽量最小化map和reduce任务之间的数据传输；hadoop允许用户针对map的输出自定义一个combiner函数，对每个map的输出进行优化，最后将combiner的结果传递给到redu">
+<meta name="twitter:image" content="https://haritbigdata.files.wordpress.com/2015/07/mapreduce.png">
 
 
 
@@ -130,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/12/散文/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/14/shuffle过程/"/>
 
 
 
 
 
-  <title>一篇散文 | yyii</title>
+  <title>Hadoop学习笔记一 | yyii</title>
   
 
 
@@ -275,7 +278,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/12/散文/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/14/shuffle过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="逍锅锅">
@@ -292,7 +295,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">一篇散文</h1>
+          <h1 class="post-title" itemprop="name headline">Hadoop学习笔记一</h1>
         
 
         <div class="post-meta">
@@ -304,8 +307,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-12T19:47:18+08:00">
-                2017-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-14T08:56:14+08:00">
+                2017-07-14
               </time>
             
 
@@ -339,7 +342,41 @@
       
 
       
-        <p>文字，是一个人心灵的名片<br>菩提一叶<br>常回家看看<br>我爱你是真实的<br>璀璨的蓝岸<br>山中觅影<br>梦里叶落知多少<br>长大的感觉<br>悲凉之秋<br>我若风，岁如歌<br>有月有半，好个艳阳天<br>山花恋人</p>
+        <p>对mapreduce的理解<br><em>by 逍锅锅</em></p>
+<blockquote>
+<p>mapreduce 之shuffle过程详解</p>
+<p>一、Combiner函数</p>
+</blockquote>
+<p>由于map任务和reduce 任务是在不同的node上，不同节点之间的交互会降低效率，所以应该尽量最小化map和reduce任务之间的数据传输；hadoop允许用户针对map的输出自定义一个combiner函数，对每个map的输出进行优化，最后将combiner的结果传递给到reduce端，这样就会减少写入磁盘的数据和传递给reducer的数据，从而提高效率。并且由于combiner是优化函数，hadoop无法确定针对特定的map输出记录要调用多少次combiner函数，也就是说，不管调用combiner函数多少次都不会影响reduce 的输出。下面以统计1950年的最高气温为例：</p>
+<p>第一个map输出为：</p>
+<p> (1950,1)<br> (1950,10)<br> (1950,20)  </p>
+<p>第二个map的输出为：</p>
+<p> (1950,30)<br> (1950,13)</p>
+<p>如果没有combiner过程，传递给reduce的数据为：<br>(1950,[1,10,20,30,13]),<br>最终输出(1950,30);<br>而写了combiner函数后,combiner会直接在map的local node上对每个map的输出处理，求出每个map输出最大值，然后将结果(1950,[20,30])传递给reduce，大大减少了不同节点间的数据交互。  </p>
+<blockquote>
+<p>二、Shuffle</p>
+<p>Shuffle是map阶段和reduce 阶段之间的过程，mapreduce的核心。</p>
+<p>map 端shuffle过程：  </p>
+</blockquote>
+<p>-&gt;Map将输出写入local disk而非HDFS,但并不是简单的写入，它首先将map输出数据写入环形内存缓冲区(默认为100MB，可以通过改变mapreduce.task.io.sort.mb属性调整)并进行预排序。一旦缓冲区里的内容达到阈值<br>（默认为80%，mapreduce.map.sort.spill.percent属性），一个后台线程开始将缓冲区内容spill(溢出)到磁盘，在spill到磁盘的过程中，map输出结果继续被写入缓冲区，但如果缓冲区在这个阶段被写满，map将阻塞直到溢出完成。溢出按照轮询的方式将缓冲区的内容写到mapreduce.cluster.local.dir属性指定作业特定子目录的目录中。  </p>
+<p>-&gt;接着预排序，在写进磁盘前，线程首先根据数据最终要被发送到的reducer将数据分成相应的分区（partition）。在每个分区中，后台线程通过key进行内排序，如果有combiner函数，则combiner函数对排序后的数据进行处理。使用combiner函数可减少本地磁盘的写入数据及传送到reducer的数据（如一所述）。</p>
+<p>-&gt;每当缓冲区达到了溢出阈值，一个新的溢出文件就被创建，所以当map任务写完最后一个输出记录时，会有好几个溢出文件。在map任务完成前，溢出文件被合并成一个单个的已分区且已排好序的输出文件。mapreduce.task.io.sort.factor属性控制一次最多能合并多少流，默认值是10.</p>
+<p>-&gt;如果至少有三个溢出文件(通过mapreduce.map.combine.minspills属性设置)，则combiner函数会在溢出文件写入磁盘前再次运行。如果只有一到两个溢出文件，再次调用combiner函数则没有太大意义。</p>
+<p>-&gt;也可以通过压缩map输出(在读进磁盘前)进行优化，这样的话写入磁盘会更快并且节省磁盘空间，而且减少了传输到reducer的数据量。默认情况下，map输出不会被压缩，但可以将mapreduce.map.output.compress设置为true启用压缩功能，使用的压缩库由mapreduce.map.output.compress.codec指定。</p>
+<p>-&gt;输出文件分区通过HTTP协议发送给reducer。用于文件分区的工作线程的数量由mapreduce.shuffle.max.threads属性控制；这个属性的设置是通过yarn上的node manager而不是map任务，它是集群范围内的设置而不是通过单个任务设置。默认值为0，表示将最大线程数设置为计算机处理器的两倍。</p>
+<blockquote>
+<p>reduce端shuffle过程：</p>
+</blockquote>
+<p>-&gt;reduce任务的复制阶段：每个map任务完成的时间可能不同，只要有一个有map任务完成，reduce就开始复制其输出。</p>
+<p>-&gt;如果map输出非常小，则直接拷贝到reduce任务的JVM内存(缓冲区大小由mapreduce.reduce.shuffle.input.buffer.percent控制)，如果比较大，则拷贝到磁盘。当内存缓冲区达到阈值大小(通过mapreduce.reduce.shuffle.merge.percent控制)或map输出阈值(mapreduce.reduce.merge.inmem.threshold)，则合并后溢出到磁盘。随着磁盘上拷贝的文件增多，后台线程将它们合并成更大的、排好序的文件。为了合并，压缩的map输出必须在内存中解压缩。</p>
+<p>-&gt;当所有的map输出都拷贝完成，reduce任务进入到排序阶段。这个阶段将合并map输出，维持其排序顺序。合并是循环进行，比如有50个map输出文件，合并因子为10(通过mapreduce.task.io.factor属性控制),则需循环五次，每一次将10个文件合并为一个，最后则有五个中间文件。</p>
+<p>-&gt;最后阶段即reduce 阶段，直接把数据输入reduce函数，在reduce阶段，对已排序输出中的每个key直接调用reduce函数，输出写入HDFS。</p>
+<blockquote>
+<p>用一张图来说明一下</p>
+<p><div align="center"><img heigh="600px" width="600px" src="https://haritbigdata.files.wordpress.com/2015/07/mapreduce.png"></div></p>
+</blockquote>
+<p>以统计单词次数为例，根据上图进行分析，假设某个split为128MB，hadoop,java和linux三个单词分别出现了n次。map根据key、value进行单次统计，则map的输出为：<br>(hadoop,1)，(java,1)，(hadoop,1)，(linux,1)，(linux,1)…..(hadoop,1)，(java,1)…；<br>此时要将结果先读进环形缓冲区，根据数据要发送的reducer进行分区，我们这里假设分成三个partition，即这个map输出会被三个reduce 处理。<br>对每个partition进行排序，利用comparator函数针对key进行排序，我们这里将它定义为根据key的首字母大小进行排序(排序算法不限)，即将首字母小的单词放在前边，排序后每个partition的结果如下：<br>(hadoop,1),(hadoop,1)…(hadoop,1),<br>(java,1),(java,1)…(java,1),<br>(linux,1),(linux,1)…(linux,1)。<br>即将每个相同的单词放在一起，<br>如果定义了combiner函数，则对每个partition调用combiner函数，对每个单词出现频率进行相加，combiner输出如下：<br>  Partition1:(hadoop,a),(java,b),(linux,c),hadoop、java、linux分别出现了a、b、c次。<br>Partition1:(hadoop,a1),(java,b1),(linux,c1)<br>Partition1:(hadoop,a2),(java,b2),(linux,c2)<br>然后将combiner的输出合并到磁盘，合并的方法为将每个partition中的hadoop、java、linux分别放在一起,则有：<br>Merger1:(hadoop,a),(hadoop,a1),(hadoop,a2)<br>Merger2:(java,b),(java,b1),(java,b2)<br>Merger3:(linux,b),(linux,b1),(linux,b2)<br>进入到reduce shuffle阶段，将每个split中的hadoop merge进行数次合并，结果为：(hadoop,[a,a1,a2,…n]),将该结果作为reduce的输入,其他单词做法完全一样。<br>Reduce 经过计算，输出结果为(hadoop,a+a1+a2+…n)，其他单词一样，mapreduce结束。</p>
+<p><div align="center"><img heigh="1000px" width="840px" src="http://img02.tooopen.com/images/20160509/tooopen_sy_161967094653.jpg"></div></p>
 
       
     </div>
@@ -376,8 +413,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/12/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2017/07/12/散文/" rel="next" title="一篇散文">
+                <i class="fa fa-chevron-left"></i> 一篇散文
               </a>
             
           </div>
@@ -385,10 +422,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/14/shuffle过程/" rel="prev" title="Hadoop学习笔记一">
-                Hadoop学习笔记一 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
