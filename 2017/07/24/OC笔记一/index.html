@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="###OC中的文件    .h文件，函数声明    .m文件，支持OC和C的混编    .mm文件(极少用)，支持OC和C++的混编      ###OC关键字    1、大部分关键字以@开头，因为OC要支持C和C++的混编，不能和C++重名，所以前边加@    2、在xcode中关键字均为紫褐色    3、在自己的代码中不能使用关键字，自己命名的标识符不能使用关键字    ###数据类型">
+<meta name="description" content="一、OC中的文件    .h文件，函数声明    .m文件，支持OC和C的混编    .mm文件(极少用)，支持OC和C++的混编      二、OC关键字    1、大部分关键字以@开头，因为OC要支持C和C++的混编，不能和C++重名，所以前边加@    2、在xcode中关键字均为紫褐色    3、在自己的代码中不能使用关键字，自己命名的标识符不能使用关键字    三、数据类型    1、所">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OC学习一   基本概念和语法">
 <meta property="og:url" content="http://yoursite.com/2017/07/24/OC笔记一/index.html">
 <meta property="og:site_name" content="yyii">
-<meta property="og:description" content="###OC中的文件    .h文件，函数声明    .m文件，支持OC和C的混编    .mm文件(极少用)，支持OC和C++的混编      ###OC关键字    1、大部分关键字以@开头，因为OC要支持C和C++的混编，不能和C++重名，所以前边加@    2、在xcode中关键字均为紫褐色    3、在自己的代码中不能使用关键字，自己命名的标识符不能使用关键字    ###数据类型">
-<meta property="og:updated_time" content="2017-07-25T06:28:35.000Z">
+<meta property="og:description" content="一、OC中的文件    .h文件，函数声明    .m文件，支持OC和C的混编    .mm文件(极少用)，支持OC和C++的混编      二、OC关键字    1、大部分关键字以@开头，因为OC要支持C和C++的混编，不能和C++重名，所以前边加@    2、在xcode中关键字均为紫褐色    3、在自己的代码中不能使用关键字，自己命名的标识符不能使用关键字    三、数据类型    1、所">
+<meta property="og:updated_time" content="2017-07-28T06:55:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC学习一   基本概念和语法">
-<meta name="twitter:description" content="###OC中的文件    .h文件，函数声明    .m文件，支持OC和C的混编    .mm文件(极少用)，支持OC和C++的混编      ###OC关键字    1、大部分关键字以@开头，因为OC要支持C和C++的混编，不能和C++重名，所以前边加@    2、在xcode中关键字均为紫褐色    3、在自己的代码中不能使用关键字，自己命名的标识符不能使用关键字    ###数据类型">
+<meta name="twitter:description" content="一、OC中的文件    .h文件，函数声明    .m文件，支持OC和C的混编    .mm文件(极少用)，支持OC和C++的混编      二、OC关键字    1、大部分关键字以@开头，因为OC要支持C和C++的混编，不能和C++重名，所以前边加@    2、在xcode中关键字均为紫褐色    3、在自己的代码中不能使用关键字，自己命名的标识符不能使用关键字    三、数据类型    1、所">
 
 
 
@@ -381,15 +381,15 @@
       
 
       
-        <p>###OC中的文件<br>    .h文件，函数声明<br>    .m文件，支持OC和C的混编<br>    .mm文件(极少用)，支持OC和C++的混编     </p>
-<p>###OC关键字<br>    1、大部分关键字以@开头，因为OC要支持C和C++的混编，不能和C++重名，所以前边加@<br>    2、在xcode中关键字均为紫褐色<br>    3、在自己的代码中不能使用关键字，自己命名的标识符不能使用关键字   </p>
-<p>###数据类型<br>    1、所有的数据类型都可以作为函数的参数和函数返回值 ，都可以定义变量<br>    2、OC中有个重要的数据类型NSObject,表示根类<br>    3、d,动态对象类型，可以指向任何对象的指针   </p>
-<p>###流程控制语句<br>和C语言唯一不一样的是，OC中增加了增强for循环，for….in</p>
-<p>###OC的异常处理<br>和java不一样的是OC的异常处理基本不用</p>
-<p>###import和include区别<br>import是include的升级版，impoirt自动防止头文件重复包含</p>
-<p>###NSLog和printf比较<br>    1、NSLog是foudation框架中用于日志输出的函数<br>    2、NSLog包含日志对应的日期，以及对应的应用程序<br>    3、自动换行，在末尾加\n是无效的<br>    4、NSLog中的格式化字符串不是普通的C语言字符串，是NSString对象，比如@”abc”字符串就是NSString对象的字面量表示<br>    5、printf中所有的占位符在OC中都是支持的，比如%f，%d，%lf，%c，%s等<br>    6、NSLog新增了格式符%@，用于输出对象</p>
-<p>###结构体和类的区别<br>C语言中，封装数据用结构体，封装行为用函数，面向对象将二者合二为一，OC中的类，结构体和枚举都应该加上前缀</p>
-<p>###OC中的方法,（重点）</p>
+        <p>一、OC中的文件<br>    .h文件，函数声明<br>    .m文件，支持OC和C的混编<br>    .mm文件(极少用)，支持OC和C++的混编     </p>
+<p>二、OC关键字<br>    1、大部分关键字以@开头，因为OC要支持C和C++的混编，不能和C++重名，所以前边加@<br>    2、在xcode中关键字均为紫褐色<br>    3、在自己的代码中不能使用关键字，自己命名的标识符不能使用关键字   </p>
+<p>三、数据类型<br>    1、所有的数据类型都可以作为函数的参数和函数返回值 ，都可以定义变量<br>    2、OC中有个重要的数据类型NSObject,表示根类<br>    3、d,动态对象类型，可以指向任何对象的指针   </p>
+<p>四、流程控制语句<br>和C语言唯一不一样的是，OC中增加了增强for循环，for….in</p>
+<p>五、OC的异常处理<br>和java不一样的是OC的异常处理基本不用</p>
+<p>六、import和include区别<br>import是include的升级版，impoirt自动防止头文件重复包含</p>
+<p>七、NSLog和printf比较<br>    1、NSLog是foudation框架中用于日志输出的函数<br>    2、NSLog包含日志对应的日期，以及对应的应用程序<br>    3、自动换行，在末尾加\n是无效的<br>    4、NSLog中的格式化字符串不是普通的C语言字符串，是NSString对象，比如@”abc”字符串就是NSString对象的字面量表示<br>    5、printf中所有的占位符在OC中都是支持的，比如%f，%d，%lf，%c，%s等<br>    6、NSLog新增了格式符%@，用于输出对象</p>
+<p>八、结构体和类的区别<br>C语言中，封装数据用结构体，封装行为用函数，面向对象将二者合二为一，OC中的类，结构体和枚举都应该加上前缀</p>
+<p>九、OC中的方法,（重点）   </p>
 <blockquote>
 <p>和C语言的写法差别很大，OC方法写法如下：   </p>
 <ul>
@@ -403,7 +403,7 @@
 4、: 前边的文字描写参数的作用，这样设计增加了方法的可读性    
 5、: 前边的参数说明符是可以省略的，但是千万不要省略    
 6、最前边加 - 表示方法是对象方法， - 为方法修饰符
-</code></pre><p>###创建对象</p>
+</code></pre><p>十、创建对象  </p>
 <blockquote>
 <p>格式：类名 *p = [类名 new]    </p>
 <p>[类名 new]:创建一个对象</p>
